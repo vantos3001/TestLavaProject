@@ -1,0 +1,10 @@
+Assembly-CSharp-Editor.csproj
+Assembly-CSharp.csproj
+TestLavaProject.sln
+Library/
+.idea/
+Temp/
+Logs/
+Builds/
+*.cache
+obj/
