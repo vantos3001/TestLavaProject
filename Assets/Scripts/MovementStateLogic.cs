@@ -15,7 +15,7 @@ namespace TestLavaProject.Core
 
         public override void Start()
         {
-            _player.CanMove = true;
+            _player.PlayerMovement.CanMove = true;
             _isReadyForChanging = false;
         }
 
@@ -54,14 +54,10 @@ namespace TestLavaProject.Core
 
             var distance = diff.magnitude;
 
-            Debug.DrawLine(startPosition, endPosition, Color.red);
-
             if (!Physics.Raycast(startPosition, direction, out var hit, distance))
             {
                 return false;
             }
-
-            Debug.Log("CheckLayer");
 
             return hit.transform.gameObject.layer == Utils.Utils.EnemyLayer;
         }
@@ -73,7 +69,7 @@ namespace TestLavaProject.Core
 
         public override void End()
         {
-            _player.CanMove = false;
+            _player.PlayerMovement.CanMove = false;
         }
     }
 }

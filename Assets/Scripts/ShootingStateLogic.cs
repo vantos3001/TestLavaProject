@@ -11,18 +11,17 @@ namespace TestLavaProject.Core
 
         public override void Start()
         {
-            _player.CanShoot = true;
+            _player.PlayerShooting.CanShoot = true;
             _isReadyForChanging = false;
         }
 
         public override void Update()
         {
-            throw new System.NotImplementedException();
         }
 
         public override void End()
         {
-            _player.CanShoot = false;
+            _player.PlayerShooting.CanShoot = false;
         }
     }
 }
