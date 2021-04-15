@@ -6,8 +6,13 @@ namespace TestLavaProject.Core
     public class Player : MonoBehaviour
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
-
+        [SerializeField] private Collider _collider;
         [SerializeField] private float MaxSpeed = 10f;
+
+        public bool CanMove;
+        public bool CanShoot;
+
+        public Vector3 CenterPosition => _collider.bounds.center;
 
         private void Update()
         {
@@ -16,7 +21,7 @@ namespace TestLavaProject.Core
 
         private void TryMove()
         {
-            if (!Physics.Raycast(GetMouseRay(), out var hit)) {return;}
+            if (!CanMove || !Physics.Raycast(GetMouseRay(), out var hit)) {return;}
             
             if (Input.GetMouseButton(0))
             {
