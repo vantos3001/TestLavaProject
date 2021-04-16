@@ -15,6 +15,7 @@ namespace TestLavaProject.Core
             _projectileInfo.CurrentLiveTime = DataManager.GameSettings.MaxProjectileLiveTime;
 
             transform.position = _projectileInfo.StartPosition;
+            transform.rotation = Quaternion.LookRotation(_projectileInfo.Direction);
             
             _rigidbody.AddForce(DataManager.GameSettings.ProjectileSpeed * _projectileInfo.Direction, ForceMode.Impulse);
         }
