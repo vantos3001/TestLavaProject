@@ -1,4 +1,5 @@
-﻿using TestLavaProject.Managers;
+﻿using System;
+using TestLavaProject.Managers;
 using UnityEngine;
 
 namespace TestLavaProject.Core
@@ -33,6 +34,11 @@ namespace TestLavaProject.Core
             {
                 Destroy(gameObject);
             }
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            Destroy(gameObject);
         }
     }
 }
