@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TestLavaProject.Managers;
+using UnityEngine;
 
 namespace TestLavaProject.Core
 {
@@ -6,19 +7,16 @@ namespace TestLavaProject.Core
     {
         [SerializeField] private Rigidbody _rigidbody;
 
-        [SerializeField] private float _maxProjectileLiveTime;
-        [SerializeField] private float _speed;
-
         private ProjectileInfo _projectileInfo;
 
         public void Init(ProjectileInfo projectileInfo)
         {
             _projectileInfo = projectileInfo;
-            _projectileInfo.CurrentLiveTime = _maxProjectileLiveTime;
+            _projectileInfo.CurrentLiveTime = DataManager.GameSettings.MaxProjectileLiveTime;
 
             transform.position = _projectileInfo.StartPosition;
             
-            _rigidbody.AddForce(_speed * _projectileInfo.Direction, ForceMode.Impulse);
+            _rigidbody.AddForce(DataManager.GameSettings.ProjectileSpeed * _projectileInfo.Direction, ForceMode.Impulse);
         }
 
         private void FixedUpdate()

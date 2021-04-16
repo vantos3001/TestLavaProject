@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TestLavaProject.Managers;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace TestLavaProject.Core
@@ -6,7 +7,6 @@ namespace TestLavaProject.Core
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
-        [SerializeField] private float MaxSpeed = 10f;
 
         [HideInInspector] public bool CanMove;
 
@@ -26,7 +26,7 @@ namespace TestLavaProject.Core
         private void MoveTo(Vector3 destination, float speedFraction)
         {
             _navMeshAgent.destination = destination;
-            _navMeshAgent.speed = MaxSpeed * Mathf.Clamp01(speedFraction);
+            _navMeshAgent.speed = DataManager.GameSettings.PlayerSpeed * Mathf.Clamp01(speedFraction);
             _navMeshAgent.isStopped = false;
         }
     }

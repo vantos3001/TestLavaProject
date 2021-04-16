@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TestLavaProject.Managers;
+using UnityEngine;
 
 
 namespace TestLavaProject.Core
@@ -7,13 +8,11 @@ namespace TestLavaProject.Core
     {
         [HideInInspector] public bool CanShoot;
 
-        [SerializeField] private float ShootSpeed;
-
         [SerializeField] private GameObject ProjectilePrefab;
 
         private float _currentTime;
 
-        private float MaxTime => 1f / ShootSpeed;
+        private float MaxTime => 1f / DataManager.GameSettings.FireRate;
 
         public void TryShoot(float delta, Vector3 from)
         {
