@@ -16,7 +16,7 @@ namespace TestLavaProject.Core
         private void Update()
         {
             _playerMovement.TryMove();
-            _playerShooting.TryShoot(Time.deltaTime, CenterPosition);
+            _playerShooting.TryShoot(Time.deltaTime);
         }
     }
 }

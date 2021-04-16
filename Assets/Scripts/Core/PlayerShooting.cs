@@ -9,12 +9,13 @@ namespace TestLavaProject.Core
         [HideInInspector] public bool CanShoot;
 
         [SerializeField] private GameObject ProjectilePrefab;
+        [SerializeField] private Transform FromPoint;
 
         private float _currentTime;
 
         private float MaxTime => 1f / DataManager.GameSettings.FireRate;
 
-        public void TryShoot(float delta, Vector3 from)
+        public void TryShoot(float delta)
         {
             if (!CanShoot)
             {
@@ -38,7 +39,7 @@ namespace TestLavaProject.Core
                 return;
             }
 
-            Shoot(from, hit.point);
+            Shoot(FromPoint.position, hit.point);
         }
 
         private void Shoot(Vector3 from, Vector3 to)

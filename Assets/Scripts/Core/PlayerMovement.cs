@@ -1,5 +1,4 @@
-﻿using System;
-using TestLavaProject.Managers;
+﻿using TestLavaProject.Managers;
 using UnityEngine;
 using UnityEngine.AI;
 
