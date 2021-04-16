@@ -1,4 +1,5 @@
-﻿using TestLavaProject.Managers;
+﻿using System;
+using TestLavaProject.Managers;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,6 +8,7 @@ namespace TestLavaProject.Core
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
+        [SerializeField] private Animator _animator;
 
         [HideInInspector] public bool CanMove;
 
@@ -28,6 +30,19 @@ namespace TestLavaProject.Core
             _navMeshAgent.destination = destination;
             _navMeshAgent.speed = DataManager.GameSettings.PlayerSpeed * Mathf.Clamp01(speedFraction);
             _navMeshAgent.isStopped = false;
+        }
+
+        private void FixedUpdate()
+        {
+            UpdateAnimator();
+        }
+
+        private void UpdateAnimator()
+        {
+            var velocity = _navMeshAgent.velocity;
+            var localVelocity = transform.InverseTransformDirection(velocity);
+            var speed = localVelocity.z;
+            _animator.SetFloat("ForwardSpeed", speed);
         }
     }
 }
