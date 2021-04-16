@@ -18,7 +18,7 @@ namespace TestLavaProject.Core
             transform.position = _projectileInfo.StartPosition;
             transform.rotation = Quaternion.LookRotation(_projectileInfo.Direction);
             
-            _rigidbody.AddForce(DataManager.GameSettings.ProjectileSpeed * _projectileInfo.Direction, ForceMode.Impulse);
+            _rigidbody.AddForce(DataManager.GameSettings.ProjectileForce * _projectileInfo.Direction, ForceMode.Impulse);
         }
 
         private void FixedUpdate()

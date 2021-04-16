@@ -10,6 +10,6 @@ namespace TestLavaProject.Configs
         public float PlayerSpeed = 10f;
         
         public float MaxProjectileLiveTime = 3f;
-        public float ProjectileSpeed = 1000f;
+        public float ProjectileForce = 1000f;
     }
 }
