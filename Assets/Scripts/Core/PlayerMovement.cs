@@ -42,7 +42,7 @@ namespace TestLavaProject.Core
             var velocity = _navMeshAgent.velocity;
             var localVelocity = transform.InverseTransformDirection(velocity);
             var speed = localVelocity.z;
-            _animator.SetFloat("ForwardSpeed", speed);
+            _animator.SetBool("IsMove", speed != 0);
         }
     }
 }
