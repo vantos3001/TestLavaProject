@@ -12,6 +12,7 @@ namespace TestLavaProject.Core
         public override void Start()
         {
             _player.PlayerShooting.CanShoot = true;
+            _player.RigBuilder.enabled = true;
             _isReadyForChanging = false;
         }
 
@@ -22,6 +23,7 @@ namespace TestLavaProject.Core
         public override void End()
         {
             _player.PlayerShooting.CanShoot = false;
+            _player.RigBuilder.enabled = false;
         }
     }
 }

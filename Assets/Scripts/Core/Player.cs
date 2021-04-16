@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 namespace TestLavaProject.Core
 {
@@ -9,6 +10,9 @@ namespace TestLavaProject.Core
         public PlayerMovement PlayerMovement => _playerMovement;
 
         [SerializeField] private PlayerShooting _playerShooting;
+        [SerializeField] private RigBuilder _rigBuilder;
+        public RigBuilder RigBuilder => _rigBuilder;
+        
         public PlayerShooting PlayerShooting => _playerShooting;
         
         public Vector3 CenterPosition => _collider.bounds.center;

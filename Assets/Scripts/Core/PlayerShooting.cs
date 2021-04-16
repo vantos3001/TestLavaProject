@@ -1,4 +1,5 @@
-﻿using TestLavaProject.Managers;
+﻿using System;
+using TestLavaProject.Managers;
 using UnityEngine;
 
 
@@ -10,6 +11,7 @@ namespace TestLavaProject.Core
 
         [SerializeField] private GameObject ProjectilePrefab;
         [SerializeField] private Transform FromPoint;
+        [SerializeField] private Transform Target;
 
         private float _currentTime;
 
@@ -38,6 +40,8 @@ namespace TestLavaProject.Core
             {
                 return;
             }
+            
+            UpdateTargetPosition(hit.point);
 
             Shoot(FromPoint.position, hit.point);
         }
@@ -63,6 +67,11 @@ namespace TestLavaProject.Core
             var projectileGO = Instantiate(ProjectilePrefab);
 
             return projectileGO.GetComponent<Projectile>();
+        }
+
+        private void UpdateTargetPosition(Vector3 position)
+        {
+            Target.position = position;
         }
     }
 }
