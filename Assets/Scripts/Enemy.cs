@@ -1,8 +1,26 @@
 ﻿using UnityEngine;
 
-public class Enemy : MonoBehaviour
+namespace TestLavaProject.Core
 {
-    [SerializeField] private Collider _collider;
+    public class Enemy : MonoBehaviour
+    {
+        [SerializeField] private Collider _collider;
 
-    public Vector3 CenterPosition => _collider.bounds.center;
+        [SerializeField] private Animator _animator;
+
+        public Vector3 CenterPosition => _collider.bounds.center;
+
+        private bool _isDead;
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (_isDead || other.GetComponent<Projectile>() == null)
+            {
+                return;
+            }
+
+            _isDead = true;
+            _animator.enabled = false;
+        }
+    }
 }
